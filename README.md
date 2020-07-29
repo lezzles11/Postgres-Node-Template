@@ -11,13 +11,54 @@ The purpose of this repository is to practice using postgres with node.
 
 ## Sprint :athletic_shoe:
 
-| Done? | Component               | Priority | Estimated Time | Actual Time |
-| ----- | ----------------------- | :------: | :------------: | :---------: |
-|       | Creating this checklist |    H     |    30 mins     |   30mins    |
-|       |                         |          |                |             |
-|       |                         |          |                |             |
-|       |                         |          |                |             |
-|       |                         |          |                |             |
+| Done? | Component                                       | Priority | Estimated Time | Actual Time |
+| ----- | ----------------------------------------------- | :------: | :------------: | :---------: |
+|       | Creating this checklist                         |    H     |    30 mins     |   30mins    |
+|       | Skim through documentation of required packages |    H     |      1 hr      |   15 mins   |
+|       | Set up postgres                                 |    H     |    30 mins     |   15 mins   |
+|       | Create UML Diagram                              |          |                |             |
+|       | Create table user                               |          |                |             |
+|       | Create table notes                              |          |                |             |
+|       | Can create table                                |          |                |             |
+|       | Can post to table                               |          |                |             |
+|       | Can edit table                                  |          |                |             |
+|       | Can delete from table                           |          |                |             |
+|       | Set up express server                           |          |                |             |
+|       |                                                 |          |                |             |
+|       |                                                 |          |                |             |
+|       |                                                 |          |                |             |
+
+### Set up postgres
+
+```
+// npm install --save pg
+
+const pg = require("pg");
+var config = {
+  user: "postgres",
+  database: "postgres",
+  password: "",
+  host: "localhost",
+  post: 5432,
+  max: 10,
+  idleTimeoutMillis: 30000,
+};
+var client = new pg.Client(config);
+client.connect();
+
+// client.query initiates the query
+// query (SELECT * FROM pizza)
+// call back (function (err, results))
+// if error, console log error
+// Otherwise, log the rows to the console
+client.query("SELECT * FROM pizza", function (err, results) {
+  if (err) {
+    console.log(err);
+  }
+  console.log(results.rows);
+});
+
+```
 
 ## Issues and Resolutions :flashlight:
 
@@ -32,7 +73,13 @@ The purpose of this repository is to practice using postgres with node.
 
 #### Credits :recycle:
 
+[cors](https://expressjs.com/en/resources/middleware/cors.html)
+[dotenv](https://github.com/motdotla/dotenv)
+[pg](https://node-postgres.com/)
+[express](https://expressjs.com/)
+[nodemon](https://nodemon.io/)
 [Jest](https://jestjs.io/)
+[body-parser](https://github.com/expressjs/body-parser)
 
 #### Contributing :round_pushpin:
 

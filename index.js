@@ -3,57 +3,51 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 app.use(cors());
-
-// npm install --save pg
-const { Pool, Client } = require("pg");
-var config = {
-  user: "postgres",
-  database: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  host: "localhost",
-  post: 5432,
-  max: 10,
-  idleTimeoutMillis: 30000,
-};
-
-const pool = new Pool(config);
-pool.query("SELECT * FROM pizza", (err, res) => {
-  // console.log("\nPool Query\n");
-  //console.log(err, res);
-  pool.end();
-});
-const client = new Client(config);
-client.connect();
-
-// client.query initiates the query
-// query (SELECT * FROM pizza)
-// call back (function (err, results))
-// if error, console log error
-// Otherwise, log the rows to the console
-// client.query("SELECT * FROM pizza", function (err, results) {
-//   if (err) {
-//     console.log(err);
-//   }
-//   console.log("\nClient Query\n");
-//   console.log(results.rows);
-// });
-
-function getPizza(name) {
-  var client = new Client(config);
-  client.connect();
-  var query = "SELECT * FROM pizza WHERE pizza_name = $1;";
-
-  console.log("Running get pizza function here!");
-  client.query(query, [name], function (err, results) {
+const db = require("./db");
+const create_user_table = `
+CREATE TABLE users (
+    username VARCHAR(255) primary key,  
+    pass VARCHAR(255) not null, 
+    created timestamp 
+);
+`;
+const add_user_one = `
+INSERT INTO users (username, pass)
+VALUES ('lesleyUsername', 'lesleyspass');
+`;
+const add_user_two = `
+INSERT INTO users (username, pass)
+VALUES ('samUsername', 'samspass');
+`;
+const get_users = `
+SELECT * FROM users; 
+`;
+function execute(query) {
+  console.log("EXECUTING QUERY\n");
+  console.log("CURRENT QUERY: \n" + query + "\n");
+  db.query(query, (err, res) => {
     if (err) {
       console.log(err);
+    } else {
+      console.log(res.rows);
     }
-    console.log(results.rows);
   });
 }
-getPizza("Pineapple");
+// execute(create_user_table);
+execute(get_users);
 
 // #TODO: CONTINUE TO GO THROUGH THE TUTORIAL
+// #TODO: CREATE USER TABLE
+
+// #TODO: CREATE NOTES TABLE
+const create_notes_table = `
+CREATE TABLE notes (
+    username VARCHAR(255) references users(username),
+    noteId INTEGER primary key, 
+    content VARCHAR(255) not null, 
+    created timestamp
+);
+`;
 // #TODO: ADD USER
 // #TODO: ADD NOTE
 // #TODO: GET NOTE

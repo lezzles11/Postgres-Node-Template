@@ -1,0 +1,19 @@
+{
+  "name": "postgres-node",
+  "version": "1.0.0",
+  "description": "postgres node",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "postgres",
+    "node",
+    "template",
+    "express",
+    "fullstack",
+    "javascript"
+  ],
+  "author": "lesley cheung",
+  "license": "MIT"
+}

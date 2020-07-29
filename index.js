@@ -22,6 +22,20 @@ VALUES ('samUsername', 'samspass');
 const get_users = `
 SELECT * FROM users; 
 `;
+
+const create_notes_table = `
+CREATE TABLE notes (
+    username VARCHAR(255) references users(username),
+    noteId INTEGER primary key, 
+    content VARCHAR(255) not null, 
+    created timestamp
+);
+`;
+const get_notes = `
+SELECT * FROM notes; 
+`;
+
+// Pass in the query as a parameter, then execute it
 function execute(query) {
   console.log("EXECUTING QUERY\n");
   console.log("CURRENT QUERY: \n" + query + "\n");
@@ -34,20 +48,13 @@ function execute(query) {
   });
 }
 // execute(create_user_table);
-execute(get_users);
+execute(create_notes_table);
+execute(get_notes);
 
 // #TODO: CONTINUE TO GO THROUGH THE TUTORIAL
 // #TODO: CREATE USER TABLE
 
 // #TODO: CREATE NOTES TABLE
-const create_notes_table = `
-CREATE TABLE notes (
-    username VARCHAR(255) references users(username),
-    noteId INTEGER primary key, 
-    content VARCHAR(255) not null, 
-    created timestamp
-);
-`;
 // #TODO: ADD USER
 // #TODO: ADD NOTE
 // #TODO: GET NOTE

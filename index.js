@@ -1,4 +1,8 @@
 require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const app = express();
+app.use(cors());
 
 // npm install --save pg
 const { Pool, Client } = require("pg");
@@ -50,7 +54,15 @@ function getPizza(name) {
 getPizza("Pineapple");
 
 // #TODO: CONTINUE TO GO THROUGH THE TUTORIAL
-// #TODO: IDEALLY BE ABLE TO ADD, EDIT, DELETE AND GET
+// #TODO: ADD USER
+// #TODO: ADD NOTE
+// #TODO: GET NOTE
+// #TODO: GET USER
+// #TODO: DELETE NOTE
+// #TODO: DELETE USER
+// #TODO: EDIT NOTE
+// #TODO: EDIT USER
+
 // #TODO: SET UP ROUTES WITH THE QUERY
 // #TODO: SET UP WITH POSTMAN
 // #TODO:

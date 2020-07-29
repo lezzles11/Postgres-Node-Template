@@ -45,16 +45,47 @@ DROP TABLE students;
 
 
 -- pgjoinsyntax
+-- the reason why you want to have a foreign key is because you want to 
+-- maintain the integrity of the data 
+-- e.g., one cannot add a new note if the user does not exist. 
+
 -- #TODO: CREATE USER TABLE 
 CREATE TABLE users (
-    id SERIAL primary key, 
+    userId INTEGER primary key, 
     username VARCHAR(255) not null, 
     pass PASSWORD not null, 
-
+    created timestamp 
 )
 
 -- #TODO: CREATE NOTE TABLE
+CREATE TABLE notes (
+    userId INTEGER references users(userId),
+    noteId INTEGER primary key, 
+    content VARCHAR(255) not null, 
+    created timestamp
+)
+
+INSERT INTO users (userId, username, pass)
+VALUES (1, 'lesleyUsername', 'lesleyspass');
+INSERT INTO users (userId, username, pass)
+VALUES (2, 'samUsername', 'samspass');
+
+INSERT INTO notes (userId, noteId, content)
+VALUES (1, 1, 'note content 1');
+INSERT INTO notes (userId, noteId, content)
+VALUES (1, 2, 'note content 2');
+INSERT INTO notes (userId, noteId, content)
+VALUES (2, 3, 'note content 3');
+INSERT INTO notes (userId, noteId, content)
+VALUES (2, 4, 'note content 4');
 
 -- #TODO: QUERY FOR ALL NOTES FROM THAT USER, GIVEN USER NAME 
 
+
+SELECT * FROM notes WHERE username = 'lesleyUsername'; 
+SELECT * FROM notes WHERE username = 'samUsername'; 
+
 -- #TODO: QUERY FOR SPECIFIC USER, GIVEN USER NAME
+
+SELECT * FROM users WHERE username = 'lesleyUsername'; 
+SELECT * FROM users WHERE username = 'samUsername';

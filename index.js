@@ -1,8 +1,7 @@
 require("dotenv").config();
 
 // npm install --save pg
-
-const pg = require("pg");
+const { Pool, Client } = require("pg");
 var config = {
   user: "postgres",
   database: process.env.DB_USER,
@@ -12,7 +11,14 @@ var config = {
   max: 10,
   idleTimeoutMillis: 30000,
 };
-var client = new pg.Client(config);
+
+const pool = new Pool(config);
+pool.query("SELECT * FROM pizza", (err, res) => {
+  console.log("\nPool Query\n");
+  console.log(err, res);
+  pool.end();
+});
+const client = new Client(config);
 client.connect();
 
 // client.query initiates the query
@@ -24,5 +30,6 @@ client.query("SELECT * FROM pizza", function (err, results) {
   if (err) {
     console.log(err);
   }
+  console.log("\nClient Query\n");
   console.log(results.rows);
 });

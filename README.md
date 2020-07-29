@@ -9,14 +9,20 @@ The purpose of this repository is to practice using postgres with node.
 1. Users will be able to look through the various examples and understand how postgres works with node.
 2. Users will be able to identify the key steps in creating such a template.
 
+### Vocabulary
+
+| Done? | Word    |                                  What it means                                   | How it fits / When to use |
+| ----- | ------- | :------------------------------------------------------------------------------: | :-----------------------: |
+|       | Pooling | Pool of connections and caching those connections so that it can be reused again |                           |
+
 ## Sprint :athletic_shoe:
 
 | Done? | Component                                       | Priority | Estimated Time | Actual Time |
 | ----- | ----------------------------------------------- | :------: | :------------: | :---------: |
-|       | Creating this checklist                         |    H     |    30 mins     |   30mins    |
-|       | Skim through documentation of required packages |    H     |      1 hr      |   15 mins   |
-|       | Set up postgres                                 |    H     |    30 mins     |   15 mins   |
-|       | Create UML Diagram                              |          |                |             |
+| x     | Creating this checklist                         |    H     |    30 mins     |   30mins    |
+| x     | Skim through documentation of required packages |    H     |      1 hr      |   15 mins   |
+| x     | Set up postgres                                 |    H     |    30 mins     |   15 mins   |
+| x     | Create UML Diagram                              |          |                |             |
 |       | Create table user                               |          |                |             |
 |       | Create table notes                              |          |                |             |
 |       | Can create table                                |          |                |             |
@@ -29,6 +35,9 @@ The purpose of this repository is to practice using postgres with node.
 |       |                                                 |          |                |             |
 
 ### Set up postgres
+
+UML Diagram:
+![UML](https://www.dropbox.com/s/cwsgbxtlhurkgux/_ERD%20with%20colored%20entities%20example%20%28UML%20notation%29.png?raw=1)
 
 ```
 // npm install --save pg
@@ -60,6 +69,31 @@ client.query("SELECT * FROM pizza", function (err, results) {
 
 ```
 
+Querying for Data
+
+- Remember to make your query an object (that would minimize vulnerabilities to your program)
+
+```
+const query = {
+  text: 'INSERT INTO users(name, email) VALUES($1, $2)',
+  values: ['brianc', 'brian.m.carlson@gmail.com'],
+}
+// callback
+client.query(query, (err, res) => {
+  if (err) {
+    console.log(err.stack)
+  } else {
+    console.log(res.rows[0])
+  }
+})
+// promise
+client
+  .query(query)
+  .then(res => console.log(res.rows[0]))
+  .catch(e => console.error(e.stack))
+
+```
+
 ## Issues and Resolutions :flashlight:
 
 **ERROR**: :gear:
@@ -80,6 +114,7 @@ client.query("SELECT * FROM pizza", function (err, results) {
 - [nodemon](https://nodemon.io/)
 - [Jest](https://jestjs.io/)
 - [body-parser](https://github.com/expressjs/body-parser)
+- [morgan](https://www.npmjs.com/package/morgan)
 
 #### Contributing :round_pushpin:
 

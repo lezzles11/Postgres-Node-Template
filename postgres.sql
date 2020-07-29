@@ -27,7 +27,7 @@ CREATE TABLE students (
     sport VARCHAR(255)
    );
 
-INSERT INTO students (name, grade, gender, sport) 
+INSERT INTO students (name, grade, gender, sport)
 VALUES (‘John’, 12,  True, ‘Football’);
 
 DELETE FROM students WHERE grade = 13;

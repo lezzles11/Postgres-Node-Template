@@ -48,7 +48,13 @@ function execute(query) {
   });
 }
 // execute(create_user_table);
-execute(create_notes_table);
+execute(get_notes);
+
+function addNote(username, noteid, content) {
+  let string = `INSERT INTO notes (username, noteId, content) VALUES ('${username}', '${noteid}', '${content}');`;
+  return string;
+}
+
 execute(get_notes);
 
 // #TODO: CONTINUE TO GO THROUGH THE TUTORIAL

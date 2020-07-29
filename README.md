@@ -93,6 +93,26 @@ client
 
 ```
 
+- Or run it as a function
+
+```
+
+function getPizza(name) {
+  var client = new Client(config);
+  client.connect();
+  var query = "SELECT * FROM pizza WHERE pizza_name = $1;";
+
+  console.log("Running get pizza function here!");
+  client.query(query, [name], function (err, results) {
+    if (err) {
+      console.log(err);
+    }
+    console.log(results.rows);
+  });
+}
+getPizza("Pineapple");
+```
+
 ## Issues and Resolutions :flashlight:
 
 **ERROR**: :gear:

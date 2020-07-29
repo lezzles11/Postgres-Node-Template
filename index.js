@@ -48,3 +48,9 @@ function getPizza(name) {
   });
 }
 getPizza("Pineapple");
+
+// #TODO: CONTINUE TO GO THROUGH THE TUTORIAL
+// #TODO: IDEALLY BE ABLE TO ADD, EDIT, DELETE AND GET
+// #TODO: SET UP ROUTES WITH THE QUERY
+// #TODO: SET UP WITH POSTMAN
+// #TODO:

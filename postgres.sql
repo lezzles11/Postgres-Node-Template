@@ -41,3 +41,20 @@ SELECT * FROM students WHERE sport = ‘Football’ AND grade > 12;
 SELECT * FROM students WHERE sport = ‘Hockey’ OR gender = False;
 SELECT * FROM students WHERE sport = ‘Hockey’ OR gender = False AND grade < 13;
 DROP TABLE students; 
+
+
+
+-- pgjoinsyntax
+-- #TODO: CREATE USER TABLE 
+CREATE TABLE users (
+    id SERIAL primary key, 
+    username VARCHAR(255) not null, 
+    pass PASSWORD not null, 
+
+)
+
+-- #TODO: CREATE NOTE TABLE
+
+-- #TODO: QUERY FOR ALL NOTES FROM THAT USER, GIVEN USER NAME 
+
+-- #TODO: QUERY FOR SPECIFIC USER, GIVEN USER NAME

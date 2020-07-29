@@ -73,13 +73,13 @@ client.query("SELECT * FROM pizza", function (err, results) {
 
 #### Credits :recycle:
 
-[cors](https://expressjs.com/en/resources/middleware/cors.html)
-[dotenv](https://github.com/motdotla/dotenv)
-[pg](https://node-postgres.com/)
-[express](https://expressjs.com/)
-[nodemon](https://nodemon.io/)
-[Jest](https://jestjs.io/)
-[body-parser](https://github.com/expressjs/body-parser)
+- [cors](https://expressjs.com/en/resources/middleware/cors.html)
+- [dotenv](https://github.com/motdotla/dotenv)
+- [pg](https://node-postgres.com/)
+- [express](https://expressjs.com/)
+- [nodemon](https://nodemon.io/)
+- [Jest](https://jestjs.io/)
+- [body-parser](https://github.com/expressjs/body-parser)
 
 #### Contributing :round_pushpin:
 

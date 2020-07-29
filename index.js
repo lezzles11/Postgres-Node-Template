@@ -1,10 +1,12 @@
+require("dotenv").config();
+
 // npm install --save pg
 
 const pg = require("pg");
 var config = {
   user: "postgres",
-  database: "postgres",
-  password: "orange",
+  database: process.env.DB_USER,
+  password: process.env.DB_PASS,
   host: "localhost",
   post: 5432,
   max: 10,

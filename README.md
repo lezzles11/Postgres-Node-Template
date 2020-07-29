@@ -17,22 +17,24 @@ The purpose of this repository is to practice using postgres with node.
 
 ## Sprint :athletic_shoe:
 
-| Done? | Component                                       | Priority | Estimated Time | Actual Time |
-| ----- | ----------------------------------------------- | :------: | :------------: | :---------: |
-| x     | Creating this checklist                         |    H     |    30 mins     |   30mins    |
-| x     | Skim through documentation of required packages |    H     |      1 hr      |   15 mins   |
-| x     | Set up postgres                                 |    H     |    30 mins     |   15 mins   |
-| x     | Create UML Diagram                              |          |                |             |
-|       | Create table user                               |          |                |             |
-|       | Create table notes                              |          |                |             |
-|       | Can create table                                |          |                |             |
-|       | Can post to table                               |          |                |             |
-|       | Can edit table                                  |          |                |             |
-|       | Can delete from table                           |          |                |             |
-|       | Set up express server                           |          |                |             |
-|       |                                                 |          |                |             |
-|       |                                                 |          |                |             |
-|       |                                                 |          |                |             |
+| Done? | Component                                            | Priority | Estimated Time | Actual Time |
+| ----- | ---------------------------------------------------- | :------: | :------------: | :---------: |
+| x     | Creating this checklist                              |    H     |    30 mins     |   30mins    |
+| x     | Skim through documentation of required packages      |    H     |      1 hr      |   15 mins   |
+| x     | Set up postgres                                      |    H     |    30 mins     |   15 mins   |
+| x     | Create UML Diagram                                   |          |                |             |
+| x     | Create table user                                    |          |                |             |
+| x     | Create table notes                                   |          |                |             |
+| x     | Can create table                                     |          |                |             |
+| x     | Can post to table                                    |          |                |             |
+| x     | Can edit table                                       |          |                |             |
+| x     | Can delete from table                                |          |                |             |
+| x     | Set up express server                                |          |                |             |
+| x     | Understand how to collect data from frontend express |          |                |             |
+|       | How to input that data from frontend to backend      |          |                |             |
+|       | CRUD Operations from frontend to backend             |          |                |             |
+
+[Example](https://github.com/hnasr/javascript_playground/blob/master/express-postgres/newserver.js)
 
 ### Set up postgres
 
@@ -113,6 +115,12 @@ function getPizza(name) {
 getPizza("Pineapple");
 ```
 
+### Collecting data from frontend to backend
+
+![How Express Works](https://www.dropbox.com/s/oaky3r5p7tuji5s/Express%20and%20Frontend.png?raw=1)
+
+#TODO: How does the data from frontend pass to the database in the backend?
+
 ## Issues and Resolutions :flashlight:
 
 **ERROR**: :gear:
@@ -123,6 +131,9 @@ getPizza("Pineapple");
 | Creating a checklist |        H        |       2hrs        |     2.5hrs      |
 
 #### What is one thing that I learned from doing this project? :books:
+
+- Better understand how express works with front end
+- Diagrams are awesome
 
 #### Credits :recycle:
 

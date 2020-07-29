@@ -14,8 +14,8 @@ var config = {
 
 const pool = new Pool(config);
 pool.query("SELECT * FROM pizza", (err, res) => {
-  console.log("\nPool Query\n");
-  console.log(err, res);
+  // console.log("\nPool Query\n");
+  //console.log(err, res);
   pool.end();
 });
 const client = new Client(config);
@@ -26,10 +26,25 @@ client.connect();
 // call back (function (err, results))
 // if error, console log error
 // Otherwise, log the rows to the console
-client.query("SELECT * FROM pizza", function (err, results) {
-  if (err) {
-    console.log(err);
-  }
-  console.log("\nClient Query\n");
-  console.log(results.rows);
-});
+// client.query("SELECT * FROM pizza", function (err, results) {
+//   if (err) {
+//     console.log(err);
+//   }
+//   console.log("\nClient Query\n");
+//   console.log(results.rows);
+// });
+
+function getPizza(name) {
+  var client = new Client(config);
+  client.connect();
+  var query = "SELECT * FROM pizza WHERE pizza_name = $1;";
+
+  console.log("Running get pizza function here!");
+  client.query(query, [name], function (err, results) {
+    if (err) {
+      console.log(err);
+    }
+    console.log(results.rows);
+  });
+}
+getPizza("Pineapple");

@@ -36,7 +36,6 @@ The purpose of this repository is to practice using postgres with node.
 
 ### Set up postgres
 
-UML Diagram:
 ![UML](https://www.dropbox.com/s/cwsgbxtlhurkgux/_ERD%20with%20colored%20entities%20example%20%28UML%20notation%29.png?raw=1)
 
 ```
@@ -115,6 +114,7 @@ client
 - [Jest](https://jestjs.io/)
 - [body-parser](https://github.com/expressjs/body-parser)
 - [morgan](https://www.npmjs.com/package/morgan)
+- [express-promise-router](https://github.com/express-promise-router/express-promise-router)
 
 #### Contributing :round_pushpin:
 

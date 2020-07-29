@@ -51,41 +51,53 @@ DROP TABLE students;
 
 -- #TODO: CREATE USER TABLE 
 CREATE TABLE users (
-    userId INTEGER primary key, 
-    username VARCHAR(255) not null, 
-    pass PASSWORD not null, 
+    username VARCHAR(255) primary key,  
+    pass VARCHAR(255) not null, 
     created timestamp 
-)
+);
 
 -- #TODO: CREATE NOTE TABLE
 CREATE TABLE notes (
-    userId INTEGER references users(userId),
+    username VARCHAR(255) references users(username),
     noteId INTEGER primary key, 
     content VARCHAR(255) not null, 
     created timestamp
-)
+);
 
-INSERT INTO users (userId, username, pass)
-VALUES (1, 'lesleyUsername', 'lesleyspass');
-INSERT INTO users (userId, username, pass)
-VALUES (2, 'samUsername', 'samspass');
+INSERT INTO users (username, pass)
+VALUES ('lesleyUsername', 'lesleyspass');
+INSERT INTO users (username, pass)
+VALUES ('samUsername', 'samspass');
 
-INSERT INTO notes (userId, noteId, content)
-VALUES (1, 1, 'note content 1');
-INSERT INTO notes (userId, noteId, content)
-VALUES (1, 2, 'note content 2');
-INSERT INTO notes (userId, noteId, content)
-VALUES (2, 3, 'note content 3');
-INSERT INTO notes (userId, noteId, content)
-VALUES (2, 4, 'note content 4');
+SELECT * FROM users; 
+INSERT INTO notes (username, noteId, content)
+VALUES ('lesleyUsername', 1, 'note content 1');
+INSERT INTO notes (username, noteId, content)
+VALUES ('lesleyUsername', 2, 'note content 2');
+INSERT INTO notes (username, noteId, content)
+VALUES ('samUsername', 3, 'note content 3');
+INSERT INTO notes (username, noteId, content)
+VALUES ('samUsername', 4, 'note content 4');
 
 -- #TODO: QUERY FOR ALL NOTES FROM THAT USER, GIVEN USER NAME 
-
-
-SELECT * FROM notes WHERE username = 'lesleyUsername'; 
-SELECT * FROM notes WHERE username = 'samUsername'; 
+SELECT * FROM notes WHERE username = 'lesleyUsername';  
 
 -- #TODO: QUERY FOR SPECIFIC USER, GIVEN USER NAME
+SELECT * FROM notes WHERE username = 'samUsername';
 
-SELECT * FROM users WHERE username = 'lesleyUsername'; 
-SELECT * FROM users WHERE username = 'samUsername';
+-- update notes 
+UPDATE notes 
+SET content = 'new content 3'
+WHERE noteId = 3; 
+
+SELECT * FROM notes; 
+
+UPDATE notes 
+SET content = 'new content 2'
+WHERE noteId = 2;
+
+
+-- delete command works 
+DELETE FROM notes WHERE noteId = 1; 
+DELETE FROM notes WHERE noteId = 2; 
+DELETE FROM notes WHERE username = 'lesleyUsername';
